@@ -1,37 +1,11 @@
---- LeftSideMenu.xml	2014-05-26 05:26:08.279206567 -0500
-+++ LeftSideMenuNew.xml	2014-05-26 05:37:49.416438305 -0500
+--- LeftSideMenu.xml	2014-05-23 08:04:41.000000000 -0500
++++ LeftSideMenuNew.xml	2014-05-28 13:11:13.493040131 -0500
 @@ -359,7 +359,7 @@
  					</item>
  					<item id="101">
  						<description>OE Settings Button</description>
 -						<label> $LOCALIZE[41000] </label>
-+						<label>  OE Settings </label>
++						<label> OE Settings </label>
  						<onclick>Dialog.Close(4998)</onclick>
  						<onclick>RunAddon(service.openelec.settings)</onclick>
  						<visible>System.isSystem(openelec)</visible>
-@@ -368,14 +368,14 @@
- 						<description>Control Global Caching</description>
- 						<label> $LOCALIZE[41001] </label>
- 						<onclick>Dialog.Close(4998)</onclick>
--                        <onclick>XBMC.ActivateWindow(10208)</onclick>
- 						<visible>System.isSystem(rasplex)</visible>
- 					</item>
- 					<item id="111">
- 						<description>Quit</description>
--						<label>$LOCALIZE[31007]</label>
-+						<label> Restart </label>
- 						<onclick>Dialog.Close(4998)</onclick>
- 						<onclick>Plex.Quit</onclick>
-+						<onclick>System.Exec(reboot)</onclick>
- 						<visible>!System.isSystem(openelec)</visible>
- 					</item>
- 					<item id="112">
-@@ -389,7 +389,7 @@
- 						<description>Shut Down</description>
- 						<label>$LOCALIZE[31961]</label>
- 						<onclick>Dialog.Close(4998)</onclick>
--						<onclick>Plex.Powerdown</onclick>
-+						<onclick>System.Exec(poweroff)</onclick>
- 					</item>
- 					<item id="114">
- 						<description>Restart</description>
