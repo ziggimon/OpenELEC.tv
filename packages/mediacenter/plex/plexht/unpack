@@ -38,7 +38,6 @@ mv $PKG_NAME-$PKG_VERSION/plex-home-theater-public-pht-frodo/* $PKG_NAME-$PKG_VE
 rm -r $PKG_NAME-$PKG_VERSION/plex-home-theater-public-pht-frodo
 patch $PKG_NAME-$PKG_VERSION/CMakeLists.txt < $PKG_DIR/patches/cmakelists.patch
 patch $PKG_NAME-$PKG_VERSION/plex/CMakeModules/PlatformConfigLINUX.cmake < $PKG_DIR/patches/platformconfig.patch
-patch $PKG_NAME-$PKG_VERSION/addons/skin.plex/720p/LeftSideMenu.xml < $PKG_DIR/patches/skinplex.patch
 patch $PKG_NAME-$PKG_VERSION/addons/skin.plex/720p/Font.xml < $PKG_DIR/patches/fontfix.patch
 
 cp -f $PKG_NAME-$PKG_VERSION/plex/Resources/Splash-OpenELEC.png $PKG_NAME-$PKG_VERSION/plex/Resources/Splash.png
