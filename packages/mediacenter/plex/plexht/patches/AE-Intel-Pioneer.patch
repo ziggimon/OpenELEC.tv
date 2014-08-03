@@ -1,0 +1,19 @@
+diff --git a/xbmc/cores/AudioEngine/Engines/SoftAE/SoftAE.cpp b/xbmc/cores/AudioEngine/Engines/SoftAE/SoftAE.cpp
+index 983cd9a..845c4b5 100644
+--- a/xbmc/cores/AudioEngine/Engines/SoftAE/SoftAE.cpp
++++ b/xbmc/cores/AudioEngine/Engines/SoftAE/SoftAE.cpp
+@@ -288,6 +288,14 @@ void CSoftAE::InternalOpenSink()
+     if (!g_advancedSettings.m_allowTranscode44100)
+       newFormat.m_sampleRate    = 48000;
+   }
++  else if (!m_transcode && !m_rawPassthrough)
++  {
++    if (newFormat.m_sampleRate < 48000)
++    {
++      CLog::Log(LOGINFO, "CSoftAE::InternalOpenSink - Forcing samplerate up to 48000 from %d", newFormat.m_sampleRate);
++      newFormat.m_sampleRate    = 48000;
++    }
++  }
+ 
+   /*
+     if there is an audio resample rate set, use it, this MAY NOT be honoured as

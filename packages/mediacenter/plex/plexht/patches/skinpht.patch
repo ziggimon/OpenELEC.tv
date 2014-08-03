@@ -1,0 +1,44 @@
+--- LeftSideMenu.xml	2014-07-14 11:13:19.000000000 +0200
++++ LeftSideMenu.xml.new	2014-07-14 11:24:56.000000000 +0200
+@@ -371,39 +371,23 @@
+             <onclick>XBMC.ActivateWindow(10208)</onclick>
+ 						<visible>System.isSystem(rasplex)</visible>
+ 					</item>
+-					<item id="111">
+-						<description>Quit</description>
+-						<label>$LOCALIZE[31007]</label>
+-						<onclick>Dialog.Close(4998)</onclick>
+-						<onclick>Plex.Quit</onclick>
+-						<visible>!System.isSystem(openelec)</visible>
+-					</item>
+ 					<item id="112">
+ 						<description>Sleep</description>
+ 						<label>$LOCALIZE[31960]</label>
+ 						<onclick>Dialog.Close(4998)</onclick>
+-						<onclick>Plex.Suspend</onclick>
+-						<visible>!System.isSystem(rasplex)</visible>
++						<onclick>System.Exec(pm-suspend)</onclick>
+ 					</item>
+ 					<item id="113">
+ 						<description>Shut Down</description>
+ 						<label>$LOCALIZE[31961]</label>
+ 						<onclick>Dialog.Close(4998)</onclick>
+-						<onclick>Plex.Powerdown</onclick>
++						<onclick>Powerdown</onclick>
+ 					</item>
+ 					<item id="114">
+ 						<description>Restart</description>
+ 						<label>$LOCALIZE[31072]</label>
+ 						<onclick>Dialog.Close(4998)</onclick>
+ 						<onclick>System.Exec(reboot)</onclick>
+-						<visible>System.isSystem(openelec)</visible>
+-					</item>
+-					<item id="115">
+-						<description>Sleep</description>
+-						<label>$LOCALIZE[31960]</label>
+-						<onclick>Dialog.Close(4998)</onclick>
+-						<onclick>System.Exec(pm-suspend)</onclick>
+-						<visible>System.isSystem(openelec) + !System.isSystem(rasplex)</visible>
+ 					</item>
+ 				</content>
+ 			</control>

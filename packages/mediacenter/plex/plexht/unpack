@@ -39,5 +39,10 @@ rm -r $PKG_NAME-$PKG_VERSION/plex-home-theater-public-pht-frodo
 patch $PKG_NAME-$PKG_VERSION/CMakeLists.txt < $PKG_DIR/patches/cmakelists.patch
 patch $PKG_NAME-$PKG_VERSION/plex/CMakeModules/PlatformConfigLINUX.cmake < $PKG_DIR/patches/platformconfig.patch
 patch $PKG_NAME-$PKG_VERSION/addons/skin.plex/720p/Font.xml < $PKG_DIR/patches/fontfix.patch
+patch $PKG_NAME-$PKG_VERSION/addons/skin.plex/720p/LeftSideMenu.xml < $PKG_DIR/patches/skinpht.patch
+
+if [ $PROJECT = Plex-Intel-Pioneer ]; then
+patch $PKG_NAME-$PKG_VERSION/xbmc/cores/AudioEngine/Engines/SoftAE/SoftAE.cpp < $PKG_DIR/patches/AE-Intel-Pioneer.patch
+fi
 
 cp -f $PKG_NAME-$PKG_VERSION/plex/Resources/Splash-OpenELEC.png $PKG_NAME-$PKG_VERSION/plex/Resources/Splash.png

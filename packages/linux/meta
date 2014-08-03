@@ -34,7 +34,7 @@ case "$LINUX" in
     PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.bz2"
     ;;
   *)
-    if [ "$PROJECT" = "Plex-Intel" ]; then
+    if [ "$PROJECT" = "Plex-Intel" ] || [ "$PROJECT" = "Plex-Intel-Pioneer" ]; then
       PKG_VERSION="3.13.4"
     else
       PKG_VERSION="3.10.24"

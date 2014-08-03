@@ -318,6 +318,15 @@ post_makeinstall_target() {
     if [ -f $PKG_DIR/config/sources.xml ]; then
       cp -R $PKG_DIR/config/sources.xml $INSTALL/usr/share/XBMC/config
     fi
+
+# install xorg configs
+    if [ -f $PKG_DIR/config/xorg/intel-xorg.conf ]; then
+      cp -R $PKG_DIR/config/xorg/intel-xorg.conf $INSTALL/usr/share/XBMC/config
+    fi
+    if [ -f $PKG_DIR/config/xorg/nvidia-xorg.conf ]; then
+      cp -R $PKG_DIR/config/xorg/nvidia-xorg.conf $INSTALL/usr/share/XBMC/config
+    fi
+
 # Install autostart.sh script
 
     if [ -f $PKG_DIR/scripts/autostart.sh ]; then
