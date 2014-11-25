@@ -75,7 +75,7 @@ ac_cv_header_librtmp_rtmp_h=yes \
             --with-random=/dev/urandom \
             --with-gnutls="$SYSROOT_PREFIX/usr" \
             --with-ssl \
-            --without-polarssl \
+            --with-polarssl \
             --without-nss \
             --with-ca-bundle="$SSL_CERTIFICATES/cacert.pem" \
             --without-ca-path \

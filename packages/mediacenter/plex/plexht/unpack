@@ -33,9 +33,12 @@
 
 # Unpack SRC
 cd $BUILD
-unzip -d $PKG_NAME-$PKG_VERSION -o $ROOT/sources/plexht/pht-frodo.zip
-mv $PKG_NAME-$PKG_VERSION/plex-home-theater-public-pht-frodo/* $PKG_NAME-$PKG_VERSION
-rm -r $PKG_NAME-$PKG_VERSION/plex-home-theater-public-pht-frodo
+#unzip -d $PKG_NAME-$PKG_VERSION -o $ROOT/sources/plexht/pht-frodo.zip
+#mv $PKG_NAME-$PKG_VERSION/plex-home-theater-public-pht-frodo/* $PKG_NAME-$PKG_VERSION
+#rm -r $PKG_NAME-$PKG_VERSION/plex-home-theater-public-pht-frodo
+rm -rf $PKG_NAME-$PKG_VERSION
+git clone git@github.com:plexinc/plex-home-theater.git $PKG_NAME-$PKG_VERSION
+cd $PKG_NAME-$PKG_VERSION ; git checkout dist-ninja ; git reset --hard dist-ninja ; cd ..
 patch $PKG_NAME-$PKG_VERSION/CMakeLists.txt < $PKG_DIR/patches/cmakelists.patch
 patch $PKG_NAME-$PKG_VERSION/plex/CMakeModules/PlatformConfigLINUX.cmake < $PKG_DIR/patches/platformconfig.patch
 patch $PKG_NAME-$PKG_VERSION/addons/skin.plex/720p/Font.xml < $PKG_DIR/patches/fontfix.patch
