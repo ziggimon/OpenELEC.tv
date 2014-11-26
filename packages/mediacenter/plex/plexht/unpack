@@ -24,9 +24,15 @@
 
 # Unpack SRC
 cd $BUILD
-rm -rf $PKG_NAME-$PKG_VERSION
-git clone --branch pht-$PKG_VERSION git@github.com:plexinc/plex-home-theater-public.git $PKG_NAME-$PKG_VERSION
-cd $PKG_NAME-$PKG_VERSION ; git reset --hard ; cd ..
+
+if [ -d $PKG_NAME-$PKG_VERSION ]; then
+  cd $PKG_NAME-$PKG_VERSION ; git reset --hard pht-$PKG_VERSION ; cd ..
+else
+  rm -rf $PKG_NAME-$PKG_VERSION
+  git clone --branch pht-$PKG_VERSION git@github.com:plexinc/plex-home-theater-public.git $PKG_NAME-$PKG_VERSION
+  cd $PKG_NAME-$PKG_VERSION ; git reset --hard pht-$PKG_VERSION ; cd ..
+fi
+
 patch $PKG_NAME-$PKG_VERSION/CMakeLists.txt < $PKG_DIR/patches/cmakelists.patch
 patch $PKG_NAME-$PKG_VERSION/addons/skin.plex/720p/Font.xml < $PKG_DIR/patches/fontfix.patch
 patch $PKG_NAME-$PKG_VERSION/addons/skin.plex/720p/LeftSideMenu.xml < $PKG_DIR/patches/skinpht.patch
