@@ -111,14 +111,14 @@ EOF
 # Add default autostart.sh
 #
 
-if [ ! -f /usr/share/XBMC/config/autostart.sh ]; then
+if [ ! -f $HOME/.config/autostart.sh ]; then
    cp /usr/share/XBMC/config/autostart.sh $HOME/.config/autostart.sh ; chmod +x $HOME/.config/autostart.sh
 fi
 
 #
 # Add xorg config to /storage/.config if not exsist.
 #
-if [ ! -f $HOME/.config/no-xorg.conf]; then
+if [ ! -f $HOME/.config/no-xorg.conf ]; then
   if [ ! -f $HOME/.config/xorg.conf ]; then
     if [ "$GPUTYPE" = "INTEL" ]; then
      cp /usr/share/XBMC/config/intel-xorg.conf $HOME/.config/xorg.conf

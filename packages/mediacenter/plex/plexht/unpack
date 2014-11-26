@@ -22,25 +22,12 @@
 
 . config/options $1
 
-#echo "### Applying architecture based patches ###"
-
-#if [ ! $TARGET_ARCH = arm ]; then
-#  for patch in `ls $PKG_DIR/patches.x86`; do
-#    cat $PKG_DIR/patches.x86/$patch | patch -d \
-#      `echo $PKG_BUILD | cut -f1 -d\ ` -p1
-#  done
-#fi
-
 # Unpack SRC
 cd $BUILD
-#unzip -d $PKG_NAME-$PKG_VERSION -o $ROOT/sources/plexht/pht-frodo.zip
-#mv $PKG_NAME-$PKG_VERSION/plex-home-theater-public-pht-frodo/* $PKG_NAME-$PKG_VERSION
-#rm -r $PKG_NAME-$PKG_VERSION/plex-home-theater-public-pht-frodo
 rm -rf $PKG_NAME-$PKG_VERSION
-git clone git@github.com:plexinc/plex-home-theater.git $PKG_NAME-$PKG_VERSION
-cd $PKG_NAME-$PKG_VERSION ; git checkout dist-ninja ; git reset --hard dist-ninja ; cd ..
+git clone --branch pht-$PKG_VERSION git@github.com:plexinc/plex-home-theater-public.git $PKG_NAME-$PKG_VERSION
+cd $PKG_NAME-$PKG_VERSION ; git reset --hard ; cd ..
 patch $PKG_NAME-$PKG_VERSION/CMakeLists.txt < $PKG_DIR/patches/cmakelists.patch
-patch $PKG_NAME-$PKG_VERSION/plex/CMakeModules/PlatformConfigLINUX.cmake < $PKG_DIR/patches/platformconfig.patch
 patch $PKG_NAME-$PKG_VERSION/addons/skin.plex/720p/Font.xml < $PKG_DIR/patches/fontfix.patch
 patch $PKG_NAME-$PKG_VERSION/addons/skin.plex/720p/LeftSideMenu.xml < $PKG_DIR/patches/skinpht.patch
 

@@ -19,12 +19,13 @@
 ################################################################################
 
 PKG_NAME="atvclient"
-PKG_VERSION="0.1"
+PKG_VERSION="50faf80"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://github.com/Evinyatar/atvclient/wiki"
-PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.bz2"
+#PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_URL="https://nightlies.plex.tv/plex-media-server-sources/$PKG_NAME-$PKG_VERSION.tar.gz"
 PKG_DEPENDS="libusb-compat"
 PKG_BUILD_DEPENDS_TARGET="toolchain libusb-compat"
 PKG_PRIORITY="optional"
