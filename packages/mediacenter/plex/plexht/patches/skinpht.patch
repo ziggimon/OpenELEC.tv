@@ -1,12 +1,12 @@
---- LeftSideMenu.xml	2014-11-12 22:48:19.000000000 +0100
-+++ LeftSideMenu.xml.new	2014-11-12 22:50:44.000000000 +0100
-@@ -396,14 +396,14 @@
+--- LeftSideMenu.xml	2014-11-19 10:13:22.000000000 +0100
++++ LeftSideMenu.xml.new	2014-11-19 10:15:29.000000000 +0100
+@@ -404,14 +404,14 @@
  						<description>Sleep</description>
  						<label>$LOCALIZE[31960]</label>
  						<onclick>Dialog.Close(4998)</onclick>
 -						<onclick>Plex.Suspend</onclick>
 +						<onclick>System.Exec(pm-suspend)</onclick>
- 						<visible>!System.isSystem(rasplex) + !System.UserIsRestricted</visible>
+ 						<visible>!System.isSystem(rasplex)</visible>
  					</item>
  					<item id="113">
  						<description>Shut Down</description>
@@ -17,3 +17,4 @@
  						<visible>!System.UserIsRestricted</visible>
  					</item>
  					<item id="114">
+
