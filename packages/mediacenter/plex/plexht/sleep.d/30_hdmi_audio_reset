@@ -1,0 +1,11 @@
+#!/bin/sh
+
+case $1 in
+    thaw|resume)
+     xrandr --output HDMI1 --off  --set "audio" "off"
+     sleep 2
+     xrandr --output HDMI1 --auto --set "audio" "on"
+    ;;
+    *)  echo "This script is for restarting HDMI audio on resume"
+    ;;
+esac
