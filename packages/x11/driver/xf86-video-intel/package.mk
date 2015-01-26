@@ -25,8 +25,7 @@ PKG_ARCH="i386 x86_64"
 PKG_LICENSE="OSS"
 PKG_SITE="http://intellinuxgraphics.org/"
 PKG_URL="http://xorg.freedesktop.org/archive/individual/driver/$PKG_NAME-$PKG_VERSION.tar.bz2"
-PKG_DEPENDS="libXcomposite systemd intel-gpu-tools"
-PKG_BUILD_DEPENDS_TARGET="toolchain libXcomposite util-macros fontsproto systemd xorg-server"
+PKG_DEPENDS_TARGET="toolchain libXcomposite util-macros fontsproto systemd xorg-server"
 PKG_PRIORITY="optional"
 PKG_SECTION="x11/driver"
 PKG_SHORTDESC="xf86-video-intel: The Xorg driver for Intel video chips"
@@ -35,8 +34,15 @@ PKG_LONGDESC="The Xorg driver for Intel i810, i815, 830M, 845G, 852GM, 855GM, 86
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
-PKG_CONFIGURE_OPTS_TARGET="--enable-udev \
+PKG_CONFIGURE_OPTS_TARGET="--disable-backlight \
+                           --disable-backlight-helper \
+                           --disable-gen4asm \
+                           --enable-udev \
+                           --disable-tools \
                            --enable-dri \
+                           --disable-dri1 \
+                           --enable-dri2 \
+                           --enable-dri3 \
                            --enable-kms --enable-kms-only \
                            --disable-ums --disable-ums-only \
                            --enable-sna \
@@ -45,6 +51,10 @@ PKG_CONFIGURE_OPTS_TARGET="--enable-udev \
                            --disable-glamor \
                            --disable-xaa \
                            --disable-dga \
+                           --disable-tear-free \
+                           --disable-rendernode \
+                           --disable-create2 \
+                           --disable-rotation \
                            --disable-async-swap \
                            --with-xorg-module-dir=$XORG_PATH_MODULES"
 
@@ -53,17 +63,6 @@ pre_configure_target() {
   strip_lto
 }
 
-# Temporary removing this for adding a full conf in /storage/.config
-
-#post_makeinstall_target() {
-
-# Install TearFree option for Intel driver if PROJECT Plex-Intel
-#
-#if [ "$PROJECT" = "Plex-Intel" ]; then
-#   if [ ! -d $INSTALL/usr/share/X11/xorg.conf.d ]; then
-#     mkdir -p $INSTALL/usr/share/X11/xorg.conf.d
-#   fi
-#   cp $PKG_DIR/config/20-intel-tearfree.conf $INSTALL/usr/share/X11/xorg.conf.d
-#fi
-
-#}
+post_makeinstall_target() {
+  rm -rf $INSTALL/usr/share/polkit-1
+}
