@@ -26,10 +26,10 @@
 cd $BUILD
 
 if [ -d $PKG_NAME-$PKG_VERSION ]; then
-  cd $PKG_NAME-$PKG_VERSION ; git reset --hard pht-$PKG_VERSION ; cd ..
+  cd $PKG_NAME-$PKG_VERSION ; git reset --hard $PKG_VERSION ; cd ..
 else
   rm -rf $PKG_NAME-$PKG_VERSION
-  git clone --branch $PKG_VERSION https://github.com/plexinc/plex-home-theater-public.git $PKG_NAME-$PKG_VERSION
+  git clone --depth 1 --branch $PKG_VERSION https://github.com/plexinc/plex-home-theater-public.git $PKG_NAME-$PKG_VERSION
   cd $PKG_NAME-$PKG_VERSION ; git reset --hard $PKG_VERSION ; cd ..
 fi
 

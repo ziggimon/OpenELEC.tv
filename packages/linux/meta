@@ -35,7 +35,7 @@ case "$LINUX" in
     ;;
   *)
     if [ "$PROJECT" = "Plex-Intel" ] || [ "$PROJECT" = "Plex-Intel-Pioneer" ]; then
-      PKG_VERSION="3.13.4"
+      PKG_VERSION="3.18.3"
     else
       PKG_VERSION="3.10.24"
     fi
@@ -48,7 +48,7 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kernel.org"
 PKG_DEPENDS="busybox linux-drivers linux-firmware pciutils $BOOTLOADER"
-PKG_BUILD_DEPENDS="toolchain cpio module-init-tools pciutils xz"
+PKG_BUILD_DEPENDS="toolchain cpio module-init-tools pciutils xz wireless-regdb"
 PKG_PRIORITY="optional"
 PKG_SECTION="linux"
 PKG_SHORTDESC="linux26: The Linux kernel 2.6 precompiled kernel binary image and modules"
