@@ -1,0 +1,15 @@
+--- a/drivers/media/rc/nuvoton-cir.c	2014-11-17 11:35:20.635233000 -0800
++++ b/drivers/media/rc/nuvoton-cir.c.new	2014-11-26 02:34:32.555233000 -0800
+@@ -989,6 +989,12 @@
+ 		goto exit_free_dev_rdev;
+ 
+ 	ret = -ENODEV;
++	/* activate pnp device */
++	if (pnp_activate_dev(pdev) < 0) {
++		dev_err(&pdev->dev, "Could not activate PNP device!\n");
++		goto exit_free_dev_rdev;
++	}
++
+ 	/* validate pnp resources */
+ 	if (!pnp_port_valid(pdev, 0) ||
+ 	    pnp_port_len(pdev, 0) < CIR_IOREG_LENGTH) {
