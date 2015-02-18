@@ -27,6 +27,29 @@ if [ "$RUNLEVEL" = openelec ]; then
   logger -t Xorg "### starting Xorg with driver ${xorg_driver} ###"
 
   ##############################################################################
+  # creating default xorg.conf file for smooth PlexHT experience
+  ##############################################################################
+
+  logger -t Xorg "### creating optimised xorg.conf for PlexHT Intel build ###"
+
+  if [ -x /usr/bin/lspci ]; then
+    GPUDEVICE=$(lspci -n | grep 0300)
+    [ "$(echo $GPUDEVICE | grep 8086)" ] && GPUTYPE="INTEL"   # 8086 == INTEL
+    [ "$(echo $GPUDEVICE | grep 10de)" ] && GPUTYPE="NVIDIA"  # 10de == NVIDIA
+    [ "$(echo $GPUDEVICE | grep 1002)" ] && GPUTYPE="AMD"     # 1002 == AMD
+  fi
+
+  export GPUTYPE
+
+  if [ ! -f $HOME/.config/no-xorg.conf ]; then
+    if [ ! -f $HOME/.config/xorg.conf ]; then
+      if [ "$GPUTYPE" = "INTEL" ]; then
+       cp /usr/share/XBMC/config/intel-xorg.conf $HOME/.config/xorg.conf
+      fi
+    fi
+  fi
+
+  ##############################################################################
   # setup xorg.conf paths
   ##############################################################################
 

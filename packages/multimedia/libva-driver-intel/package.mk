@@ -1,36 +1,36 @@
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
-#      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
+#      Copyright (C) 2009-2014 Stephan Raue (stephan@openelec.tv)
 #
-#  This Program is free software; you can redistribute it and/or modify
+#  OpenELEC is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation; either version 2, or (at your option)
-#  any later version.
+#  the Free Software Foundation, either version 2 of the License, or
+#  (at your option) any later version.
 #
-#  This Program is distributed in the hope that it will be useful,
+#  OpenELEC is distributed in the hope that it will be useful,
 #  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #  GNU General Public License for more details.
 #
 #  You should have received a copy of the GNU General Public License
-#  along with OpenELEC.tv; see the file COPYING.  If not, write to
-#  the Free Software Foundation, 51 Franklin Street, Suite 500, Boston, MA 02110, USA.
-#  http://www.gnu.org/copyleft/gpl.html
+#  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="libva-driver-intel"
-PKG_VERSION="1.2.2"
+PKG_NAME="libva-intel-driver"
+PKG_VERSION="1.5.0"
 PKG_REV="1"
 PKG_ARCH="i386 x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://freedesktop.org/wiki/Software/vaapi"
-PKG_URL="http://cgit.freedesktop.org/vaapi/intel-driver/snapshot/intel-driver-$PKG_VERSION.tar.gz"
+PKG_URL="http://www.freedesktop.org/software/vaapi/releases/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.bz2"
 PKG_DEPENDS="libdrm"
 PKG_BUILD_DEPENDS="toolchain libva libdrm"
 PKG_PRIORITY="optional"
 PKG_SECTION="multimedia"
 PKG_SHORTDESC="libva-driver-intel: Intel G45+ driver for VAAPI"
 PKG_LONGDESC="libva-driver-intel: Intel G45+ driver for VAAPI"
-PKG_IS_ADDON="no"
 
+PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
+
+PKG_CONFIGURE_OPTS_TARGET="--disable-silent-rules --with-drivers-path=/usr/lib/va"
