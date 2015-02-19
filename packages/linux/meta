@@ -35,7 +35,7 @@ case "$LINUX" in
     ;;
   *)
     if [ "$PROJECT" = "Plex-Intel" ] || [ "$PROJECT" = "Plex-Intel-Pioneer" ]; then
-      PKG_VERSION="3.18.3"
+      PKG_VERSION="3.18.5"
     else
       PKG_VERSION="3.10.24"
     fi

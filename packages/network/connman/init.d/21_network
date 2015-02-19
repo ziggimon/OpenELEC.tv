@@ -22,6 +22,20 @@
 #
 # runlevels: openelec, textmode
 
+################################################################################
+# Adding default wait file on first run for OE PHT
+################################################################################
+
+if [ ! -f /storage/.plexht/userdata/guisettings.xml ]; then
+  if [ ! -d /storage/.cache/openelec ]; then
+    mkdir -p /storage/.cache/openelec
+  fi
+  echo "WAIT_NETWORK=\"true\"" > /storage/.cache/openelec/network_wait
+  echo "WAIT_NETWORK_TIME=\"5\"" >> /storage/.cache/openelec/network_wait
+fi
+
+################################################################################
+
 if [ -f $HOME/.config/debug.connman ]; then
   CONNMAN_DEBUG="-d"
 fi
